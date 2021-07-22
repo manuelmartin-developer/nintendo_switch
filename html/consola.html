@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Nintendo Switch</title>
+</head>
+<body class="body">
+    <div class="carcasa" id="carcasa">
+        <div class="marco-pantalla" id="marco-pantalla">
+            <div class="pantalla" id="pantalla">
+                <video src="../media/Miitopia.mp4" id="video" width="100%"></video>
+            </div>
+        </div>
+        <div class="boton_l"></div>
+        <div class="boton_r"></div>
+        <div class="boton_menos"></div>
+        <div class="conjunto_mas_pequeno">
+            <div class="sombra_mas_vertical"></div>
+            <div class="boton_mas1"></div>
+            <div class="boton_mas2"></div>
+        </div>
+        <div class="joystick_izq">
+            <div class="circulo_joystick_izq"></div>
+        </div>
+        <div class="botonera">
+        <div class="boton_X">X</div>
+        <div class="boton_Y">Y</div>
+        <div class="boton_A">A</div>
+        <div class="boton_B">B</div>
+        </div>
+        <div class="conjunto_mas_grande">
+            <div class="sombra_mas_vertical_grande"></div>
+            <div class="boton_mas1_grande"></div>
+            <div class="boton_mas2_grande"></div>
+            <div class="flecha_abajo"></div>
+            <div class="flecha_arriba"></div>
+            <div class="flecha_izq"></div>
+            <div class="flecha_dcha"></div>
+        </div>
+        <div class="boton_cuadrado_izq">
+            <div class="circulo_boton_cuadrado_izq"></div>
+        </div>
+        <div class="joystick_dch">
+            <div class="circulo_joystick_dch"></div>
+        </div>
+        <div class="boton_home" onclick="verVideo(this)">
+            <div class="circulo_boton_cuadrado_dch"></div>
+        </div>
+        <div class="selectorColor"><input type="color" id="nuevoColor" onchange="changeColor(this.value)"></div>
+
+    </div>
+
+    <script>
+
+    function verVideo(elemento)
+    {
+        var color = (elemento.style.backgroundColor == 'chartreuse') ? '#e9e7e7' : 'chartreuse';
+        elemento.style.backgroundColor = color;
+
+        var video = document.getElementById('video');
+
+        if(color == 'chartreuse'){
+            video.style.visibility = 'visible';
+            video.play();
+            /* settimeout(() => {
+                lowBattery(elemento);
+            }, 5000); */
+        }else{
+            video.style.visibility = 'hidden';
+            video.pause();
+            video.currentTime = 0;
+        }
+    }
+
+   /*  function lowBattery(elemento){
+        
+        var color = elemento.style.backgroundColor;
+        setInterval(() => {
+            if(color == "chartreuse"){
+                color =  "redorange";
+            }else if (color == "redorange"){
+                color = "#e9e7e7";
+            }
+        elemento.style.backgroundColor = color; 
+        }, 1000);
+        
+    } */
+
+    function changeColor(color){
+
+        let carcasa = document.getElementById("carcasa");
+        let pantalla = document.getElementById("marco-pantalla");
+
+        carcasa.style.backgroundColor = color;
+        pantalla.style.backgroundColor = color;
+
+    }
+
+    </script>
+</body>
+</html>
